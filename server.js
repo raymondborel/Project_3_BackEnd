@@ -1,6 +1,10 @@
 // Import Dependencies
+require('dotenv').config();
+const PORT = process.env.PORT || 4000;
 const express = require("express");
 const cors = require("cors");
+const restaurantsController = require('./controllers/restaurants');
+
 
 // Create our app object
 const app = express();
@@ -10,16 +14,14 @@ app.use(cors());
 
 //home route for testing our app
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Home Page");
 });
 
-// route for retrieving projects
-app.get("/restaurants", (req, res) => {
-  // send projects via JSON
-});
+app.use('/restaurants', restaurantsController);
 
-//declare a variable for our port number
-const PORT = process.env.PORT || 4000;
+app.get('/*', (req, res) => {
+    res.json({comment: "This is a bad URL"});
+})
 
 // turn on the server listener
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
