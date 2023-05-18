@@ -11,10 +11,12 @@ const app = express();
 
 // set up middleware
 app.use(cors());
+// I need to parse incoming requests (which tend to be strings) and make it so those requests are in JSON
+app.use(express.json());
 
 //home route for testing our app
 app.get("/", (req, res) => {
-  res.send("Home Page");
+  res.json({comment: "Welcome to the Home Page"});
 });
 
 app.use('/restaurants', restaurantsController);
@@ -24,4 +26,6 @@ app.get('/*', (req, res) => {
 })
 
 // turn on the server listener
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`)
+});
