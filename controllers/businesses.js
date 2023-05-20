@@ -4,7 +4,15 @@ const { Businesses } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        res.status(200).json(await Businesses.find({}));
+        let myBusinesses;
+        console.log(req.query);
+        if (req.query.search) {
+            myBusinesses = await Businesses.find({name: req.query.search})
+            console.log(myBusinesses);
+        } else {
+            myBusinesses = await Businesses.find({});
+        }
+        res.status(200).json(myBusinesses);
     } catch(err) {
         console.log(err);
     }
@@ -17,7 +25,7 @@ router.post('/', async (req, res) => {
         console.log(err);
     }
 })
-
+Businesses.findOne
 // SHOW ROUTE
 router.get("/:id", async (req, res) => {
     try {
