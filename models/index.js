@@ -1,6 +1,6 @@
 require('../config/connection');
 
 module.exports = {
-    Restaurants: require('./Restaurants'),
+    Recommendations: require('./Recommendations'),
     Businesses: require('./Businesses')
 }
