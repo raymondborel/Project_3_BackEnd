@@ -21,10 +21,8 @@ router.post('/', async (req, res) => {
 // SHOW ROUTE
 router.get("/:id", async (req, res) => {
     try {
-        // get people by ID
         res.json(await Businesses.findById(req.params.id));
       } catch (error) {
-        //send error
         res.status(400).json(error);
       }
 });
@@ -32,7 +30,7 @@ router.get("/:id", async (req, res) => {
 // UPDATE ROUTE
 router.put("/:id", async (req, res) => {
   try {
-    // update people by ID
+    // update by ID
     res.json(
       await Businesses.findByIdAndUpdate(req.params.id, req.body, {new:true})
     );
