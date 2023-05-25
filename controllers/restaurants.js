@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const { Businesses } = require('../models');
+const { Restaurants } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        let myBusinesses;
+        let myRestaurants;
         console.log(req.query);
         if (req.query.search) {
-            myBusinesses = await Businesses.find({name: req.query.search})
-            console.log(myBusinesses);
+            myRestaurants = await Restaurants.find({name: req.query.search})
+            console.log(myRestaurants);
         } else {
-            myBusinesses = await Businesses.find({});
+            myRestaurants = await Restaurants.find({});
         }
-        res.status(200).json(myBusinesses);
+        res.status(200).json(myRestaurants);
     } catch(err) {
         console.log(err);
     }
@@ -20,16 +20,16 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        res.status(201).json(await Businesses.create(req.body));
+        res.status(201).json(await Restaurants.create(req.body));
     } catch (err) {
         console.log(err);
     }
 })
-Businesses.findOne
+Restaurants.findOne
 // SHOW ROUTE
 router.get("/:id", async (req, res) => {
     try {
-        res.json(await Businesses.findById(req.params.id));
+        res.json(await Restaurants.findById(req.params.id));
       } catch (error) {
         res.status(400).json(error);
       }
@@ -40,7 +40,7 @@ router.put("/:id", async (req, res) => {
   try {
     // update by ID
     res.json(
-      await Businesses.findByIdAndUpdate(req.params.id, req.body, {new:true})
+      await Restaurants.findByIdAndUpdate(req.params.id, req.body, {new:true})
     );
   } catch (error) {
     //send error
@@ -52,7 +52,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     // delete  by ID
-    res.json(await Businesses.findByIdAndRemove(req.params.id));
+    res.json(await Restaurants.findByIdAndRemove(req.params.id));
   } catch (error) {
     //send error
     res.status(400).json(error);
