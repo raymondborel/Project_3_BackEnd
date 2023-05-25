@@ -3,7 +3,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 4000;
 const express = require("express");
 const cors = require("cors");
-const { businesses, recommendations } = require('./controllers');
+const { recommendations, restaurants } = require('./controllers');
 
 
 // Create our app object
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use('/recommendations', recommendations);
-app.use('/businesses', businesses);
+app.use('/restaurants', restaurants);
 
 app.get('/*', (req, res) => {
     res.json({comment: "This is a bad URL"});

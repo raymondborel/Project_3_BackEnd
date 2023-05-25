@@ -1,5 +1,5 @@
 
 module.exports = {
     recommendations: require('./recommendations'),
-    businesses: require('./businesses')
+    restaurants: require('./restaurants')
 }

@@ -13,7 +13,7 @@ mongoose.connection
     .on("close", () => console.log("You are disconnected from mongoose :'("))
     .on("error", (error) => console.log(error));
 
-const { Businesses } = require('./models');
+const { Restaurants } = require('./models');
 
 const seedingData = async () => {
     try {
@@ -25,16 +25,16 @@ const seedingData = async () => {
             }
           };
         //this fetch is for San Francisco with limit of 20 businesses  
-        const myBusinesses = await fetch('https://api.yelp.com/v3/businesses/search?location=San%2520Francisco&sort_by=best_match&limit=20', options)
+        const myRestaurants = await fetch('https://api.yelp.com/v3/businesses/search?location=San%2520Francisco&sort_by=best_match&limit=20', options)
             .then(response => response.json())
             // .then(response => console.log(response))
             .catch(err => console.error(err));
         // console.log(myBusinesses.businesses[0]);
         // const allBusinesses = await myBusinesses.json();
-        const deletedBusinesses = await Businesses.deleteMany({});
-        const addedBusinesses = await Businesses.insertMany(myBusinesses.businesses);
-        console.log(deletedBusinesses);
-        console.log(addedBusinesses);
+        // const deletedRestaurants = await Restaurants.deleteMany({});
+        const addedRestaurants = await Restaurants.insertMany(myRestaurants.businesses);
+        // console.log(deletedRestaurants);
+        console.log(addedRestaurants);
     } catch (err) {
         console.log(err);
     }
