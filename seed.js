@@ -24,8 +24,8 @@ const seedingData = async () => {
               Authorization: APIKey
             }
           };
-        //this fetch is for San Francisco with limit of 20 businesses  
-        const myRestaurants = await fetch('https://api.yelp.com/v3/businesses/search?location=San%2520Francisco&sort_by=best_match&limit=20', options)
+        //this fetch is for San Francisco with limit of 50 businesses  
+        const myRestaurants = await fetch('https://api.yelp.com/v3/businesses/search?location=San%2520Francisco&sort_by=best_match&limit=50', options)
             .then(response => response.json())
             // .then(response => console.log(response))
             .catch(err => console.error(err));
