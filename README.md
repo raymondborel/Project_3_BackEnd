@@ -4,9 +4,9 @@ BackEnd for Project 3, full stack CRUD application connected to a React FrontEnd
 
 ## Screenshots
 
-![Restaurants model](https://imgur.com/a/B5K4uBo "Restaurants Model")
+![Restaurants model](https://i.imgur.com/1Q07krn.png "Restaurants Model")
 
-![Recommendations model](https://imgur.com/uLAtAKG "Recommendations Model")
+![Recommendations model](https://i.imgur.com/uLAtAKG.png "Recommendations Model")
 
 ## Technologies Used
 
