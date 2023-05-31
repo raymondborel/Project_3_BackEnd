@@ -31,7 +31,7 @@ const seedingData = async () => {
             .catch(err => console.error(err));
         // console.log(myBusinesses.businesses[0]);
         // const allBusinesses = await myBusinesses.json();
-        //const deletedBusinesses = await Businesses.deleteMany({});
+        const deletedBusinesses = await Businesses.deleteMany({});
         const addedBusinesses = await Businesses.insertMany(myBusinesses.businesses);
         console.log(deletedBusinesses);
         console.log(addedBusinesses);
