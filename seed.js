@@ -25,13 +25,13 @@ const seedingData = async () => {
             }
           };
         //this fetch is for San Francisco with limit of 20 businesses  
-        const myBusinesses = await fetch('https://api.yelp.com/v3/businesses/search?location=San%2520Francisco&sort_by=best_match&limit=20', options)
+        const myBusinesses = await fetch('https://api.yelp.com/v3/businesses/search?location=San%2520Francisco&sort_by=best_match&limit=50', options)
             .then(response => response.json())
             // .then(response => console.log(response))
             .catch(err => console.error(err));
         // console.log(myBusinesses.businesses[0]);
         // const allBusinesses = await myBusinesses.json();
-        const deletedBusinesses = await Businesses.deleteMany({});
+        //const deletedBusinesses = await Businesses.deleteMany({});
         const addedBusinesses = await Businesses.insertMany(myBusinesses.businesses);
         console.log(deletedBusinesses);
         console.log(addedBusinesses);
